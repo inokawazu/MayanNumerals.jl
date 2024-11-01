@@ -1,0 +1,4 @@
+name = "MayanNumerals"
+uuid = "4b11acdf-4b61-42a7-91d9-8b5fad44ec07"
+authors = ["Markus Amano <markus.a.amano@gmail.com>"]
+version = "0.1.0"
