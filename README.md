@@ -1,14 +1,14 @@
-A fun package for duing math with historic Mayan Numerals
+A fun package for doing math with historic Mayan numerals.
 
 # Usage 
 
-Check out how Mayan numbers were make. Left is the largest placevalue.
-In decimal every place value is a multiple of a place value that ten times more than the previous.
+Check out how Mayan numbers are made. The leftmost symbol represents the largest place value. 
+In the decimal system, every place value is a multiple of ten times the previous value.
 
-In Mayan it is base 20. So there are 19 symbols. 
-So every place value is twenty more the previous.
-The 3rd position is not 20 times larger than the last but 18. 
-It is a special exception that makes this numeral system distinct.
+In the Mayan system, it is base 20, which means there are 19 symbols. 
+Thus, every place value is twenty times more than the previous one. 
+However, the third position is not 20 times larger than the last; it is 18. 
+This is a special exception that makes this numeral system distinct.
 
 ```julia
 julia> using MayanNumerals
@@ -76,6 +76,6 @@ julia> mayan"𝋡𝋭𝋲" + mayan"𝋣𝋠𝋠"
 
 # Further Reading
 
-- https://en.wikipedia.org/wiki/Maya_numerals
-- https://en.wikipedia.org/wiki/Positional_notation
-- https://en.wikipedia.org/wiki/Mayan_Numerals_(Unicode_block)
+- [Maya numerals - Wikipedia](https://en.wikipedia.org/wiki/Maya_numerals)
+- [Positional notation - Wikipedia](https://en.wikipedia.org/wiki/Positional_notation)
+- [Mayan Numerals (Unicode block) - Wikipedia](https://en.wikipedia.org/wiki/Mayan_Numerals_(Unicode_block))
