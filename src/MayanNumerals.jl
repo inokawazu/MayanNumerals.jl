@@ -1,6 +1,6 @@
 module MayanNumerals
 
-export Mayan
+export Mayan, @mayan_str
 
 const MAYAN_NUMERALS = [
                         '𝋠',  # 0
@@ -35,7 +35,33 @@ struct Mayan{T}
     end
 end
 
-placevalue(n) = n == 1 ? 18 : 20
+macro mayan_str(s)
+    mayan_parse(s)
+end
+
+function mayan_parse(s::AbstractString, T = Int)
+    ncs = length(s)
+    value = zero(T)
+    for (ind, c) in zip(ncs-1:-1:0, s)
+        place_ind = findfirst(==(c), MAYAN_NUMERALS)
+
+        if isnothing(place_ind)
+            throw(ArgumentError("$s is not a valid Mayan Numeral"))
+        end
+
+        place_value = place_ind - 1
+
+        radix = position_radix(ind)
+        value *= radix
+        value += place_value
+    end
+
+    return Mayan(value)
+end
+
+position_radix(ind) = ind == 1 ? 18 : 20
+
+Base.Int(m::Mayan) = Int(m.value)
 
 function digit2mayanchar(digit)
     @assert 0 <= digit < 20
@@ -62,7 +88,7 @@ function digits(m::Mayan{T}) where T
 
     ds = T[]
     for pv in Iterators.countfrom(0)
-        n, d = divrem(n, placevalue(pv))
+        n, d = divrem(n, position_radix(pv))
         push!(ds, d)
         if iszero(n)
             break
